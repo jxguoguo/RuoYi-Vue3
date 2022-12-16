@@ -61,6 +61,7 @@ export const constantRoutes = [
     path: '',
     component: Layout,
     redirect: '/index',
+    leftShow:true,//是否在左边显示
     children: [
       {
         path: '/index',
@@ -83,7 +84,45 @@ export const constantRoutes = [
         meta: { title: '个人中心', icon: 'user' }
       }
     ]
-  }
+  },
+  {
+    name: 'fileManage',
+    path: '/filemanage',
+    hidden: false,
+    component: Layout,
+    alwaysShow: true,
+    leftShow:true,
+    redirect: '/filemanage/uploadfile',
+    // permissions: ['system:dict:list'],
+    meta: { title: '文件管理', icon: "system", noCache: false },
+    children: [
+      {
+        name: 'uploadFile',
+        path: 'uploadfile',
+        component: () => import('@/views/fileManage/uploadFile'),
+        meta: { title: '上传文件', icon: "system", noCache: false },
+      }
+    ]
+  },
+  {
+    name: 'encryptManage',
+    path: '/encryptmanage',
+    hidden: false,
+    component: Layout,
+    alwaysShow: true,
+    leftShow:true,
+    redirect: '/encryptmanage/encryptnumber',
+    // permissions: ['system:dict:list'],
+    meta: { title: '加密号管理', icon: "system", noCache: false },
+    children: [
+      {
+        name: 'encryptNumber',
+        path: 'encryptnumber',
+        component: () => import('@/views/encryptManage/index'),
+        meta: { title: '加密小号', icon: "system", noCache: false },
+      }
+    ]
+  },
 ]
 
 // 动态路由，基于用户权限动态去加载

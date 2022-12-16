@@ -334,8 +334,8 @@
 import { getToken } from "@/utils/auth";
 import { changeUserStatus, listUser, resetUserPwd, delUser, getUser, updateUser, addUser, deptTreeSelect } from "@/api/system/user";
 
-const router = useRouter();
-const { proxy } = getCurrentInstance();
+const router = useRouter();//
+const { proxy } = getCurrentInstance(); //获取this指向
 const { sys_normal_disable, sys_user_sex } = proxy.useDict("sys_normal_disable", "sys_user_sex");
 
 const userList = ref([]);
@@ -398,7 +398,7 @@ const data = reactive({
   }
 });
 
-const { queryParams, form, rules } = toRefs(data);
+const { queryParams, form, rules } = toRefs(data); //解构赋值
 
 /** 通过条件过滤节点  */
 const filterNode = (value, data) => {

@@ -24,7 +24,7 @@ const useUserStore = defineStore(
           login(username, password, code, uuid).then(res => {
             let data = res.data
             setToken(data.access_token)
-            console.log('设置token',data.access_token);
+            console.log('设置token', data.access_token);
             this.token = data.access_token
             resolve()
           }).catch(error => {

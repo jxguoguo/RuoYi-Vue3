@@ -16,7 +16,7 @@ const usePermissionStore = defineStore(
       addRoutes: [],
       defaultRoutes: [],
       topbarRouters: [],
-      sidebarRouters: []
+      sidebarRouters: [],//左边路由
     }),
     actions: {
       setRoutes(routes) {
@@ -30,7 +30,13 @@ const usePermissionStore = defineStore(
         this.topbarRouters = routes
       },
       setSidebarRouters(routes) {
-        this.sidebarRouters = routes
+        let routesData = []
+        routesData = routes.filter((item)=>{
+          return item.leftShow 
+        })
+        console.log(routesData,'====');//暂时过滤掉()
+
+        this.sidebarRouters = routesData
       },
       generateRoutes(roles) {
         return new Promise(resolve => {
